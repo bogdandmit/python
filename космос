@@ -1,0 +1,24 @@
+def setup():
+    size(400,400)
+    background("#000000")
+def draw():
+    fill(255)  
+    if mousePressed:
+        if mouseButton==LEFT:
+            fill(random(0,255),random(0,255),random(0,255))
+            circle(random(0,400),random(0,400),10)
+        if mouseButton==RIGHT:
+            background("#000000")
+        if mouseButton==CENTER:
+            fill("#00FF1B")
+            triangle(225, 275, 200, 325, 250, 325)
+            triangle(200, 200, 250, 200, 225, 175)
+            fill("#FC0D05")
+            rect(200,200,50,100)
+            fill("#2505FC")
+            circle(225,275,25) 
+            circle(225,235,25)
+            fill("#FF0000")
+            triangle(225, 375, 205, 330, 245, 330)
+            fill("#FF6200")
+            triangle(225, 367, 213, 335, 237, 335)
