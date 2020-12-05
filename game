@@ -1,0 +1,39 @@
+c=0
+x=0
+y=random(-400,-50)
+a=501
+w=50
+h=400
+spase=75
+def setup():
+    size(400,400)
+def draw():
+    background("#030303")
+    global x,y,a,b,spase,c
+    textSize(50)
+    text(c,100,100)
+    translate(200,200)
+    rect(0,x,50,50)
+    rect(a,y+h+spase,w,h+200)
+    rect(a,y,w,h)
+    a-=3
+    if mousePressed:
+        if mouseButton==LEFT:
+            x+=5
+        if mouseButton==RIGHT:
+            x-=5
+        if x>=200:
+            x=-200
+        if x<=-201:
+            x=200
+    if a<=-200-w:
+        a=200
+        y=random(-400,-50)
+    if a<=50 and a>=-50:
+        if x<=y+h or x+50>=y+h+spase:
+            noLoop()
+    if a==0:
+        c+=1
+    
+            
+        
