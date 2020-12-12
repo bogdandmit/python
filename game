@@ -1,10 +1,11 @@
 c=0
-x=0
+x=200
 y=random(-400,-50)
-a=501
+a=500
 w=50
 h=400
 spase=75
+b=200
 def setup():
     size(400,400)
 def draw():
@@ -12,28 +13,29 @@ def draw():
     global x,y,a,b,spase,c
     textSize(50)
     text(c,100,100)
-    translate(200,200)
-    rect(0,x,50,50)
+    rect(b,x,50,50)
     rect(a,y+h+spase,w,h+200)
     rect(a,y,w,h)
-    a-=3
-    if mousePressed:
-        if mouseButton==LEFT:
-            x+=5
-        if mouseButton==RIGHT:
-            x-=5
-        if x>=200:
-            x=-200
-        if x<=-201:
-            x=200
-    if a<=-200-w:
-        a=200
+    a-=2
+    if keyPressed:
+        if keyCode==DOWN:
+            x+=6
+        if keyCode==UP:
+            x-=6
+        if x<=0:
+            x=400
+        if x>=401:
+            x=0
+    if a<=0-w:
+        a=400
         y=random(-400,-50)
-    if a<=50 and a>=-50:
+    if a<=250 and a>=150:
         if x<=y+h or x+50>=y+h+spase:
             noLoop()
-    if a==0:
+    if a<=0:
         c+=1
-    
-            
-        
+def mouseClicked():
+    global x,a
+    x=200 
+    a=501
+    loop()
