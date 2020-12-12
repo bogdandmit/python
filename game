@@ -1,6 +1,6 @@
 c=0
 x=200
-y=random(-400,-50)
+y=random(-400,-80)
 a=500
 w=50
 h=400
@@ -27,15 +27,18 @@ def draw():
         if x>=401:
             x=0
     if a<=0-w:
+        c+=1
         a=400
-        y=random(-400,-50)
+        y=random(-400,-80)
     if a<=250 and a>=150:
         if x<=y+h or x+50>=y+h+spase:
             noLoop()
-    if a<=0:
-        c+=1
+
 def mouseClicked():
-    global x,a
+    global x,a,c
     x=200 
     a=501
+    c=0
     loop()
+  
+    
