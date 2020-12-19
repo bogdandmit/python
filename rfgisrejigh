@@ -1,0 +1,31 @@
+x=175
+y=125
+a=200
+b=150
+c=175
+d=224
+e=226
+f=225
+def setup():
+    size(400,400)
+def draw():
+    background("#000000")
+    global x,y,a,b,c,d,e,f
+    triangle(a,b,c,d,e,f)
+    rect(x,y,50,75)#квадрат который двигается
+    rect(100,325,50,50)
+    rect(175,325,50,50)
+    rect(250,325,50,50)
+    rect(175,250,50,50)
+    if mousePressed:
+        if mouseX>100 and mouseX<100+50 and mouseY>325 and mouseY<325+50: 
+            x-=1
+        if mouseX<175 and mouseX<175+50 and mouseY>325 and mouseY<325+50:
+            y+=1
+        if mouseX>250 and mouseX<250+50 and mouseY>325 and mouseY<325+50:
+            x+=1 
+        if mouseX>175 and mouseX<175+50 and mouseY>250 and mouseY<250+50:
+            y-=1
+            b-=1
+            f-=1
+            d-=1
