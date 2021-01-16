@@ -1,0 +1,11 @@
+def setup():
+    size(400,400)
+def draw():
+    translate(200,200)
+    fill("#FF0303")
+    ellipse(0,0,125,50)
+    fill("#030303")
+    circle(0,0,50)
+    circle(40,0,10)
+    circle(-40,0,10)
+    line(
