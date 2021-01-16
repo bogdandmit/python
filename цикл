@@ -1,0 +1,9 @@
+x=0
+def setup():
+    size(400,400)
+def draw():
+    global x
+    background("#030303")
+    for y in range (0,400,50):
+        rect(x,y,50,50)
+    x+=1
