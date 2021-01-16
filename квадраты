@@ -1,0 +1,13 @@
+x=200
+def setup():
+    size(410,400)
+    rectMode(CENTER)
+def draw():
+    translate(0,200)
+    for y in range (0,24,3):
+        translate(50,0)
+        push()
+        rotate(radians(y))
+        rect(-25,0,50,50) 
+        pop()
+        #rotate(radians(3))
