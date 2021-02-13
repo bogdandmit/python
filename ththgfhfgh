@@ -1,0 +1,18 @@
+x=[]
+y=[]
+def setup():
+    size(600,600)
+    strokeWeight(20)
+def draw():
+    background(255)
+    for i in range(len(x)):
+        point(x[i],y[i])
+def mouseClicked():
+    if mouseButton == LEFT:
+        x.append(mouseX)
+        y.append(mouseY)
+        loop()
+    if mouseButton == RIGHT and len(x) >0 :
+        del x[len(x)-1]
+        del y[len(y)-1]
+   
