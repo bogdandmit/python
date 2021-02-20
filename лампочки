@@ -1,0 +1,19 @@
+def setup(): 
+    lampOff = loadImage("1.png") 
+    global lampOff
+    size(600,400) 
+    background("#000000") 
+    image(lampOff,175,100,200,200)
+def draw():
+    global lampOff, lampOn
+    lampOff = loadImage("1.png") 
+    lampOn = loadImage("2.png")
+    rect(525,160,50,50)
+    rect(25,160,50,50)
+def mouseClicked():
+    if mouseX>=525 and mouseX<=575 and mouseY>=160 and mouseY<=210:
+        background("#000000")
+        image(lampOn,175,100,200,200)
+    if mouseX>=25 and mouseX<=75 and mouseY>=160 and mouseY<=210:
+        background("#000000")
+        image(lampOff,175,100,200,200)
