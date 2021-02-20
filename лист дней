@@ -1,0 +1,17 @@
+week=['monday','tuesday','wednesday','tursday','friday','saturday','sunday']
+f=0
+def setup():
+    size(600,400)
+def draw():
+    global week,f
+    textSize(50)
+    background("#000000")
+    text(week[f],225,200)
+    rect(25,160,50,50)
+    rect(525,160,50,50)
+def mouseClicked():
+    global f
+    if mouseX>=525 and mouseX<=575 and mouseY>=160 and mouseY<=210:
+        f+=1
+    if mouseX>=25 and mouseX<=75 and mouseY>=160 and mouseY<=210:
+        f-=1
