@@ -1,0 +1,34 @@
+x=0
+y=0
+def bilshifr(x,y):
+    #x = 50
+    #y = 105
+    push()
+    translate(x-50 , y -105)
+    fill("#DCFF00")
+    triangle(50, 50, 0, 150, 100, 150)
+    fill(255)
+    ellipse(50,105,40,20)
+    line(50,106,50,101)
+    line(40,50,60,50)
+    fill(0)
+    rect(45,10,10,40)
+    line(76,100,110,140)
+    line(25,100,-10,140)
+    pop()
+def setup():
+    size(600,400)
+def draw():
+    background("#FFFFFF")
+    global x,y
+    bilshifr(x,y)
+    if keyPressed:
+        if keyCode==UP:
+            y-=2
+        if keyCode==DOWN:
+            y+=2
+        if keyCode==LEFT:
+            x-=2
+        if keyCode==RIGHT:
+            x+=2
+
