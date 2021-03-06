@@ -1,0 +1,17 @@
+def a(x,y):
+    push()
+    translate(x,y)
+    scale(0.2)
+    for f in range(8):
+        rotate(radians(45))
+        stroke(1)
+        rect(0,0,50,200)
+        ellipse(25,140,100,50)
+        ellipse(25,90,100,50)
+        circle(0,0,150)
+    pop()
+def setup():
+    size(600,600)
+def draw():
+    a(200,200)
+    
