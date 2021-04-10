@@ -1,0 +1,35 @@
+class zmeya:
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+        self.dy = 0
+        self.dx = 1
+    def zdraw(self):
+        push()
+        fill("#05FF13")
+        rect(self.x*50,self.y*50,50,50,5)
+        pop()
+    def move(self , dx,dy):
+        self.x += dx
+        self.y += dy
+    
+zm = zmeya(10,10)        
+def setup():
+    size(600,600)
+def draw():
+    global x,y,dx,dy
+    background(255)
+    for x1 in range(0,600,50):
+            for y1 in range(0,600,50):
+                rect(x1,y1,50,50,5)    
+    zm.zdraw()
+def keyPressed():
+        global zm
+        if keyCode==UP:
+            zm.move(0,-1)
+        if keyCode==DOWN:
+            zm.move(0,1)
+        if keyCode==LEFT:
+            zm.move(-1,0)
+        if keyCode==RIGHT:
+            zm.move(1, 0)
