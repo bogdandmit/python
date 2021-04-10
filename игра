@@ -16,14 +16,23 @@ class bilshifr:
         line(40,50,60,50)
         fill(0)
         rect(45,10,10,40)
-        line(76,100,110,140)
+        #правая (с моей стороны) рука
+        fill("#0590FF")
+        push()
+        noStroke()
+        triangle(115,60,98,100,123,105)
+        circle(110,105,25)
+        pop()
+        line(76,100,100,120)
+        line(100,120,110,110)
+        #левая рука
         line(25,100,-10,140)
         line(50+10,150,50+10,170)
         line(50+10,170,40+10,180)
         line(50-10,150,50-10,170)
         line(50-10,170,40-10,180)
         pop()
-class pikachy:
+#class pikachy:
 bill = bilshifr(x,y)
 def setup():
     size(700,400)
