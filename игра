@@ -1,5 +1,7 @@
 x = 0
 y = 0
+dx = 0
+dy = 0
 class bilshifr:
     def __init__(self,x,y):
         self.x=x
@@ -7,22 +9,29 @@ class bilshifr:
         
     def bildraw(self):
         push()
-        translate(x-50 , y -105)
-        fill("#DCFF00")
+        translate(x+10, y +90)
+        fill("#DCFF01")
         triangle(50, 50, 0, 150, 100, 150)
         fill(255)
         ellipse(50,105,40,20)
+        push()
+        strokeWeight(2.5)
         line(50,106,50,101)
+        pop()
         line(40,50,60,50)
         fill(0)
         rect(45,10,10,40)
         #правая (с моей стороны) рука
-        fill("#0590FF")
         push()
+        fill("#0A50FA")
         noStroke()
-        triangle(115,60,98,100,123,105)
+        triangle(115,57.5,98,100,123,105)
         circle(110,105,25)
+        fill("#0590FF")
+        triangle(114,67.5,103,100,118,105)
+        circle(110,105,17.5)
         pop()
+        strokeWeight(2.5)
         line(76,100,100,120)
         line(100,120,110,110)
         #левая рука
@@ -49,3 +58,22 @@ def draw():
             x-=2
         if keyCode==RIGHT:
             x+=2
+        if keyCode==SHIFT:
+            push()
+            translate(dx+10, dy +90)
+            fill("#0A50FA")
+            noStroke()
+            triangle(57.5,110,105,94,107.5,117.5)
+            circle(110,105,25)
+            fill("#0590FF")
+            triangle(67.5,110,110,96,110,114)
+            circle(110,105,17.5)
+            pop()
+    if x+2:
+        dx+2
+    if x-2:
+        dx-2
+    if y+2:
+        dy+2
+    if y-2:
+        dy-2
