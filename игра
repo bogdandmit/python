@@ -48,7 +48,7 @@ def setup():
 def draw():
     background(255)
     bill.bildraw()
-    global x,y
+    global x,y, dx
     if keyPressed:
         if keyCode==UP:
             y-=2
@@ -60,7 +60,8 @@ def draw():
             x+=2
         if keyCode==SHIFT:
             push()
-            translate(dx+10, dy +90)
+            dx+=2
+            translate(dx+10, y +90)
             fill("#0A50FA")
             noStroke()
             triangle(57.5,110,105,94,107.5,117.5)
@@ -69,11 +70,18 @@ def draw():
             triangle(67.5,110,110,96,110,114)
             circle(110,105,17.5)
             pop()
-    if x+2:
-        dx+2
-    if x-2:
-        dx-2
-    if y+2:
-        dy+2
-    if y-2:
-        dy-2
+    if dx>=1:
+        push()
+        dx+=2
+        translate(dx+10, y +90)
+        fill("#0A50FA")
+        noStroke()
+        triangle(57.5,110,105,94,107.5,117.5)
+        circle(110,105,25)
+        fill("#0590FF")
+        triangle(67.5,110,110,96,110,114)
+        circle(110,105,17.5)
+        pop()
+    if dx>=575:
+        dx=0
+        
