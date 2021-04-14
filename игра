@@ -1,7 +1,7 @@
 x = 0
 y = 0
 dx = 0
-dy = 0
+dy = y
 class bilshifr:
     def __init__(self,x,y):
         self.x=x
@@ -48,8 +48,8 @@ def setup():
 def draw():
     background(255)
     bill.bildraw()
-    global x,y, dx
     if keyPressed:
+        global x , y , dx , dy
         if keyCode==UP:
             y-=2
         if keyCode==DOWN:
@@ -60,6 +60,7 @@ def draw():
             x+=2
         if keyCode==SHIFT:
             push()
+        y!=y
             dx+=2
             translate(dx+10, y +90)
             fill("#0A50FA")
@@ -71,7 +72,9 @@ def draw():
             circle(110,105,17.5)
             pop()
     if dx>=1:
+        
         push()
+        
         dx+=2
         translate(dx+10, y +90)
         fill("#0A50FA")
@@ -82,6 +85,6 @@ def draw():
         triangle(67.5,110,110,96,110,114)
         circle(110,105,17.5)
         pop()
-    if dx>=575:
-        dx=0
+        if dx>=575:
+            dx=0
         
