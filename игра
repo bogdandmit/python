@@ -1,7 +1,7 @@
 x = 0
 y = 0
 dx = 0
-dy = y
+dy = 0
 class bilshifr:
     def __init__(self,x,y):
         self.x=x
@@ -54,13 +54,8 @@ def draw():
             y-=2
         if keyCode==DOWN:
             y+=2
-        if keyCode==LEFT:
-            x-=2
-        if keyCode==RIGHT:
-            x+=2
         if keyCode==SHIFT:
             push()
-        y!=y
             dx+=2
             translate(dx+10, y +90)
             fill("#0A50FA")
@@ -72,9 +67,7 @@ def draw():
             circle(110,105,17.5)
             pop()
     if dx>=1:
-        
         push()
-        
         dx+=2
         translate(dx+10, y +90)
         fill("#0A50FA")
