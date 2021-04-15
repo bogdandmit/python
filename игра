@@ -6,7 +6,6 @@ class bilshifr:
     def __init__(self,x,y):
         self.x=x
         self.y=y
-        
     def bildraw(self):
         push()
         translate(x+10, y +90)
@@ -80,4 +79,3 @@ def draw():
         pop()
         if dx>=575:
             dx=0
-        
