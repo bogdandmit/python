@@ -1,9 +1,4 @@
 c=0
-
-
-            
-
-
 class chelovek:
     def __init__(self,x,y):
         self.x=x
@@ -12,8 +7,8 @@ class chelovek:
     def cheldraw(self):
         image(self.img ,self.x,self.y,50,50)
     def randomPos(self):
-        self.x=random(0,350)
-        self.y=random(0,350)
+        self.x=random(0,750)
+        self.y=random(0,550)
 class cpritz:
     def __init__(self,x,y):
         self.x=x
@@ -28,14 +23,17 @@ def setup():
 
     chel=chelovek(200,200)
     cp=cpritz(300,300)
-    size(400,400)
+    size(800,600)
 def draw():
 
     background(255)
     cp.drsp()
     global c
+    fill(0)
+    textSize(25)
     text(c,50,50)
     chel.cheldraw()
+
     if mousePressed:
         if mouseX>=chel.x and mouseX<=chel.x+50 and mouseY>=chel.y and mouseY<=chel.y+50:
             chel.randomPos()
