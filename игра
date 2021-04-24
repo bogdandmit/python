@@ -1,14 +1,11 @@
-x = 0
-y = 0
-dx = 0
-dy = 0
+
 class bilshifr:
     def __init__(self,x,y):
         self.x=x
         self.y=y
     def bildraw(self):
         push()
-        translate(x+10, y +90)
+        translate(self.x, self.y)
         fill("#DCFF01")
         triangle(50, 50, 0, 150, 100, 150)
         fill(255)
@@ -40,23 +37,20 @@ class bilshifr:
         line(50-10,150,50-10,170)
         line(50-10,170,40-10,180)
         pop()
-#class pikachy:
-bill = bilshifr(x,y)
-def setup():
-    size(700,400)
-def draw():
-    background(255)
-    bill.bildraw()
-    if keyPressed:
-        global x , y , dx , dy
-        if keyCode==UP:
-            y-=2
-        if keyCode==DOWN:
-            y+=2
+        if keyPressed:
+            if key=="w":
+                self.y -= 2
+            if key=="s":
+                self.y += 2
+class Atak:
+    def __init__(self,dx,dy):
+        self.dx=dx
+        self.dy=dy
+        self.speed = 2
+    def move(self):
         if keyCode==SHIFT:
             push()
-            dx+=2
-            translate(dx+10, y +90)
+            translate(self.dx+10,self.dy +90)
             fill("#0A50FA")
             noStroke()
             triangle(57.5,110,105,94,107.5,117.5)
@@ -65,10 +59,20 @@ def draw():
             triangle(67.5,110,110,96,110,114)
             circle(110,105,17.5)
             pop()
-    if dx>=1:
+            self.dx+=self.speed
+            if self.dx>=575:
+                self.dx=0
+                
+class Bullet:
+    def __init__(self,x,y):
+        self.x=x
+        self.y=y
+        self.speed = 2
+    def move(self):
+        self.x += self.speed
+    def draw_(self):
         push()
-        dx+=2
-        translate(dx+10, y +90)
+        translate(self.x, self.y)
         fill("#0A50FA")
         noStroke()
         triangle(57.5,110,105,94,107.5,117.5)
@@ -77,5 +81,27 @@ def draw():
         triangle(67.5,110,110,96,110,114)
         circle(110,105,17.5)
         pop()
-        if dx>=575:
-            dx=0
+      
+bill = bilshifr(0,0)
+at = Atak(0,0)
+
+bullet = []
+
+def setup():
+    size(700,400)
+def draw():
+    background(255)
+    bill.bildraw()
+    at.move()
+    
+    for bul in bullet:
+        bul.move()
+        bul.draw_()
+        if bul.x > 575:
+            del bullet[0]
+    
+    if keyPressed:
+        
+        if keyCode == SHIFT and len(bullet) == 0:
+            bullet.append(Bullet(bill.x+110 , bill.y + 105))
+        
