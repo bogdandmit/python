@@ -5,7 +5,7 @@ class bilshifr:
         self.y=y
     def bildraw(self):
         push()
-        translate(self.x, self.y)
+        translate(self.x+10, self.y)
         fill("#DCFF01")
         triangle(50, 50, 0, 150, 100, 150)
         fill(255)
@@ -37,11 +37,12 @@ class bilshifr:
         line(50-10,150,50-10,170)
         line(50-10,170,40-10,180)
         pop()
+    def bilmove(self):
         if keyPressed:
             if key=="w":
-                self.y -= 2
+                y -= 2
             if key=="s":
-                self.y += 2
+                y += 2
 class Atak:
     def __init__(self,dx,dy):
         self.dx=dx
@@ -72,7 +73,20 @@ class Bullet:
         self.x += self.speed
     def draw_(self):
         push()
-        translate(self.x, self.y)
+        translate(self.x+10, self.y)
+        fill("#0A50FA")
+        noStroke()
+        triangle(57.5,110,105,94,107.5,117.5)
+        circle(110,105,25)
+        fill("#0590FF")
+        triangle(67.5,110,110,96,110,114)
+        circle(110,105,17.5)
+        pop()
+    def specdraw(self):
+        rect(15,335,50,50,10)
+        push()
+        scale(0.5)
+        translate(self.x-10, self.y+615)
         fill("#0A50FA")
         noStroke()
         triangle(57.5,110,105,94,107.5,117.5)
@@ -84,16 +98,16 @@ class Bullet:
       
 bill = bilshifr(0,0)
 at = Atak(0,0)
-
+spec=Bullet(0,0)
 bullet = []
-
+Move=bilshifr
 def setup():
     size(700,400)
 def draw():
     background(255)
     bill.bildraw()
-    at.move()
-    
+    spec.specdraw()
+    Move.bilmove
     for bul in bullet:
         bul.move()
         bul.draw_()
@@ -101,7 +115,5 @@ def draw():
             del bullet[0]
     
     if keyPressed:
-        
         if keyCode == SHIFT and len(bullet) == 0:
-            bullet.append(Bullet(bill.x+110 , bill.y + 105))
-        
+            bullet.append(Bullet(bill.x , bill.y))
