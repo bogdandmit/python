@@ -1,4 +1,3 @@
-
 class bilshifr:
     def __init__(self,x,y):
         self.x=x
@@ -37,12 +36,6 @@ class bilshifr:
         line(50-10,150,50-10,170)
         line(50-10,170,40-10,180)
         pop()
-    def bilmove(self):
-        if keyPressed:
-            if key=="w":
-                y -= 2
-            if key=="s":
-                y += 2
 class Atak:
     def __init__(self,dx,dy):
         self.dx=dx
@@ -63,7 +56,6 @@ class Atak:
             self.dx+=self.speed
             if self.dx>=575:
                 self.dx=0
-                
 class Bullet:
     def __init__(self,x,y):
         self.x=x
@@ -95,25 +87,26 @@ class Bullet:
         triangle(67.5,110,110,96,110,114)
         circle(110,105,17.5)
         pop()
-      
 bill = bilshifr(0,0)
 at = Atak(0,0)
 spec=Bullet(0,0)
 bullet = []
-Move=bilshifr
 def setup():
     size(700,400)
 def draw():
+    global self.y
     background(255)
     bill.bildraw()
     spec.specdraw()
-    Move.bilmove
     for bul in bullet:
         bul.move()
         bul.draw_()
         if bul.x > 575:
             del bullet[0]
-    
     if keyPressed:
         if keyCode == SHIFT and len(bullet) == 0:
             bullet.append(Bullet(bill.x , bill.y))
+        if keyCode==UP:
+            self.y-=2
+        if keyCode==DOWN:
+            self.y+=2
