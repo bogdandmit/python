@@ -1,3 +1,4 @@
+c=0
 class bilshifr:
     def __init__(self,x,y):
         self.x=x
@@ -36,26 +37,12 @@ class bilshifr:
         line(50-10,150,50-10,170)
         line(50-10,170,40-10,180)
         pop()
-class Atak:
-    def __init__(self,dx,dy):
-        self.dx=dx
-        self.dy=dy
-        self.speed = 2
-    def move(self):
-        if keyCode==SHIFT:
-            push()
-            translate(self.dx+10,self.dy +90)
-            fill("#0A50FA")
-            noStroke()
-            triangle(57.5,110,105,94,107.5,117.5)
-            circle(110,105,25)
-            fill("#0590FF")
-            triangle(67.5,110,110,96,110,114)
-            circle(110,105,17.5)
-            pop()
-            self.dx+=self.speed
-            if self.dx>=575:
-                self.dx=0
+        if keyPressed:
+            if key=='w':
+                self.y-=2
+            if key=='s':
+                self.y+=2
+
 class Bullet:
     def __init__(self,x,y):
         self.x=x
@@ -75,10 +62,11 @@ class Bullet:
         circle(110,105,17.5)
         pop()
     def specdraw(self):
-        rect(15,335,50,50,10)
+        fill(255)
+        rect(15,325,50,50,10)
         push()
         scale(0.5)
-        translate(self.x-10, self.y+615)
+        translate(self.x-10, self.y+600)
         fill("#0A50FA")
         noStroke()
         triangle(57.5,110,105,94,107.5,117.5)
@@ -87,17 +75,37 @@ class Bullet:
         triangle(67.5,110,110,96,110,114)
         circle(110,105,17.5)
         pop()
+class aironmen:
+    def __init__(self,x1,y1):
+        self.x1=x1
+        self.y1=y1
+    def imendraw(self):
+        push()
+        translate(self.x1+550,self.y1)
+        image(img,0,0,165,190)
+        if keyPressed:
+            if keyCode==UP:
+                self.y1-=2
+            if keyCode==DOWN:
+                self.y1+=2
+        pop()
+men=aironmen(0,0)
 bill = bilshifr(0,0)
-at = Atak(0,0)
-spec=Bullet(0,0)
+
 bullet = []
 def setup():
+    global img
     size(700,400)
+    img = loadImage("1.png")
 def draw():
-    global self.y
+    global c
     background(255)
     bill.bildraw()
-    spec.specdraw()
+    men.imendraw()
+
+    fill(0)
+    textSize(20)
+    text(u"SHIFT для стрельбы",15,395)  
     for bul in bullet:
         bul.move()
         bul.draw_()
@@ -106,7 +114,3 @@ def draw():
     if keyPressed:
         if keyCode == SHIFT and len(bullet) == 0:
             bullet.append(Bullet(bill.x , bill.y))
-        if keyCode==UP:
-            self.y-=2
-        if keyCode==DOWN:
-            self.y+=2
