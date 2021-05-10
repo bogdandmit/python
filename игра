@@ -1,4 +1,6 @@
 c=0
+t=0
+a=195
 class bilshifr:
     def __init__(self,x,y):
         self.x=x
@@ -6,6 +8,15 @@ class bilshifr:
     def bildraw(self):
         push()
         translate(self.x+10, self.y)
+        if keyPressed:
+            if key=='r':
+                self.y-=2
+            if key=='f':
+                self.y+=2
+            if key=='d':
+                self.x-=2
+            if key=='g':
+                self.x+=2
         fill("#DCFF01")
         triangle(50, 50, 0, 150, 100, 150)
         fill(255)
@@ -37,22 +48,16 @@ class bilshifr:
         line(50-10,150,50-10,170)
         line(50-10,170,40-10,180)
         pop()
-        if keyPressed:
-            if key=='w':
-                self.y-=2
-            if key=='s':
-                self.y+=2
-
-class Bullet:
-    def __init__(self,x,y):
-        self.x=x
-        self.y=y
-        self.speed = 2
-    def move(self):
-        self.x += self.speed
-    def draw_(self):
+    def atak(self):
         push()
-        translate(self.x+10, self.y)
+        rect(60,342.5,195,37.5,10)
+        fill("#00FF0E")
+        rect(15,335,45,45,10)
+        rect(60,342.5,c,37.5,10)
+        line(125,342.5,125,380)
+        line(190,342.5,190,380)
+        scale(0.5)
+        translate(self.x-15, self.y+610)
         fill("#0A50FA")
         noStroke()
         triangle(57.5,110,105,94,107.5,117.5)
@@ -60,13 +65,20 @@ class Bullet:
         fill("#0590FF")
         triangle(67.5,110,110,96,110,114)
         circle(110,105,17.5)
+        c<=196
         pop()
-    def specdraw(self):
-        fill(255)
-        rect(15,325,50,50,10)
+   
+
+class Bullet:
+    def __init__(self,x2,y2):
+        self.x2=x2
+        self.y2=y2
+        self.speed = 5
+    def move(self):
+        self.x2 += self.speed
+    def draw_(self):
         push()
-        scale(0.5)
-        translate(self.x-10, self.y+600)
+        translate(self.x2+10, self.y2)
         fill("#0A50FA")
         noStroke()
         triangle(57.5,110,105,94,107.5,117.5)
@@ -88,29 +100,60 @@ class aironmen:
                 self.y1-=2
             if keyCode==DOWN:
                 self.y1+=2
+            if keyCode==LEFT:
+                self.x1-=2
+            if keyCode==RIGHT:
+                self.x1+=2
+        pop()
+class Light:
+    def __init__(self,x3,y3):
+        self.x3=x3
+        self.speed1=speed1
+        self.y3=y3
+    def move(self):
+        self.x3 -= self.speed1
+    def Ldraw(self):
+        push
+        fill("#00E3FF")
+        circle(0,0,50)
         pop()
 men=aironmen(0,0)
 bill = bilshifr(0,0)
-
+spec=bilshifr(0,0)
 bullet = []
+light = []
 def setup():
     global img
     size(700,400)
     img = loadImage("1.png")
 def draw():
     global c
+    c+=0.1
+    c!=a
     background(255)
     bill.bildraw()
     men.imendraw()
-
-    fill(0)
-    textSize(20)
-    text(u"SHIFT для стрельбы",15,395)  
+    spec.atak()
+    if t == 0:
+        push()
+        fill(0)
+        textSize(20)
+        text(u"SHIFT для стрельбы",15,395)  
+        pop()
     for bul in bullet:
         bul.move()
         bul.draw_()
-        if bul.x > 575:
+        if bul.x2 > 575:
             del bullet[0]
-    if keyPressed:
-        if keyCode == SHIFT and len(bullet) == 0:
-            bullet.append(Bullet(bill.x , bill.y))
+    for li in light:
+        li.move()
+        li.Ldraw()
+def keyReleased():
+    global c,t
+    if keyCode == SHIFT and len(bullet) <= 2 and c>=65:
+        bullet.append(Bullet(bill.x , bill.y))
+        c-=65
+        t+=1
+    if keyCode == ENTER and len(light) <= 2:
+        light.append(Light(men.x1 , men.y1))
+        background(0)
