@@ -1,6 +1,6 @@
 c=0
 t=0
-a=195
+state=0
 class bilshifr:
     def __init__(self,x,y):
         self.x=x
@@ -17,7 +17,7 @@ class bilshifr:
                 self.x-=2
             if key=='g':
                 self.x+=2
-        fill("#DCFF01")
+        fill("#FAFF00")
         triangle(50, 50, 0, 150, 100, 150)
         fill(255)
         ellipse(50,105,40,20)
@@ -65,7 +65,6 @@ class bilshifr:
         fill("#0590FF")
         triangle(67.5,110,110,96,110,114)
         circle(110,105,17.5)
-        c<=196
         pop()
    
 
@@ -94,13 +93,13 @@ class aironmen:
     def imendraw(self):
         push()
         translate(self.x1+550,self.y1)
-        image(img,0,0,165,190)
+        image(img,0,0,190,190)
         if keyPressed:
-            if keyCode==UP:
+            if keyCode==UP and self.y1>=-8:
                 self.y1-=2
-            if keyCode==DOWN:
+            if keyCode==DOWN and self.y1<=400:
                 self.y1+=2
-            if keyCode==LEFT:
+            if keyCode==LEFT and self.x1>=350:
                 self.x1-=2
             if keyCode==RIGHT:
                 self.x1+=2
@@ -108,14 +107,21 @@ class aironmen:
 class Light:
     def __init__(self,x3,y3):
         self.x3=x3
-        self.speed1=speed1
+        self.speed1=5
         self.y3=y3
+        self.q=5
+        self.h=602
     def move(self):
         self.x3 -= self.speed1
+        if self.q<=500:
+            self.q-=5
     def Ldraw(self):
-        push
+        push()
+        noStroke()
+        rectMode(CENTER)
         fill("#00E3FF")
-        circle(0,0,50)
+        rect(self.h,108,self.q,8,50)
+        translate(self.x3+10,self.y3)
         pop()
 men=aironmen(0,0)
 bill = bilshifr(0,0)
@@ -127,33 +133,47 @@ def setup():
     size(700,400)
     img = loadImage("1.png")
 def draw():
-    global c
-    c+=0.1
-    c!=a
-    background(255)
-    bill.bildraw()
-    men.imendraw()
-    spec.atak()
-    if t == 0:
-        push()
-        fill(0)
-        textSize(20)
-        text(u"SHIFT для стрельбы",15,395)  
-        pop()
-    for bul in bullet:
-        bul.move()
-        bul.draw_()
-        if bul.x2 > 575:
-            del bullet[0]
-    for li in light:
-        li.move()
-        li.Ldraw()
+    global state
+    if state==0:
+        fill(0,100,255)
+        rect(300,175,100,50)
+        fill(255,0,0)
+        triangle(325,185,325,215,375,200)
+        if mousePressed:
+            if mouseX>=300 and mouseX<=400 and mouseY>=175 and mouseY<=225:
+                state=1
+                fill(255)
+    elif state==1:
+        global c
+        if c<195:
+            c+=0.1
+        background(255)
+        bill.bildraw()
+        men.imendraw()
+        spec.atak()
+        if t == 0:
+            push()
+            fill(0)
+            textSize(20)
+            text(u"SHIFT для стрельбы",15,395)  
+            pop()
+        for bul in bullet:
+            bul.move()
+            bul.draw_()
+            if bul.x2 > 575:
+                del bullet[0]
+        for li in light:
+            li.move()
+            li.Ldraw()
+            if li.x3<125:
+                pass
+                #del light[0]
 def keyReleased():
     global c,t
     if keyCode == SHIFT and len(bullet) <= 2 and c>=65:
         bullet.append(Bullet(bill.x , bill.y))
         c-=65
         t+=1
-    if keyCode == ENTER and len(light) <= 2:
-        light.append(Light(men.x1 , men.y1))
+    if key == ENTER and len(light) <= 2:
+        light.append(Light(men.x1,men.y1))
         background(0)
