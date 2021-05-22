@@ -1,6 +1,7 @@
 c=0
 t=0
 state=0
+hp=100
 class bilshifr:
     def __init__(self,x,y):
         self.x=x
@@ -9,14 +10,11 @@ class bilshifr:
         push()
         translate(self.x+10, self.y)
         if keyPressed:
-            if key=='r':
+            if key=='w':
                 self.y-=2
-            if key=='f':
+            if key=='s':
                 self.y+=2
-            if key=='d':
-                self.x-=2
-            if key=='g':
-                self.x+=2
+
         fill("#FAFF00")
         triangle(50, 50, 0, 150, 100, 150)
         fill(255)
@@ -86,7 +84,7 @@ class Bullet:
         triangle(67.5,110,110,96,110,114)
         circle(110,105,17.5)
         pop()
-class aironmen:
+class ironmen:
     def __init__(self,x1,y1):
         self.x1=x1
         self.y1=y1
@@ -95,37 +93,33 @@ class aironmen:
         translate(self.x1+550,self.y1)
         image(img,0,0,190,190)
         if keyPressed:
-            if keyCode==UP and self.y1>=-8:
+            if keyCode==UP:
                 self.y1-=2
-            if keyCode==DOWN and self.y1<=400:
+            if keyCode==DOWN:
                 self.y1+=2
-            if keyCode==LEFT and self.x1>=350:
-                self.x1-=2
-            if keyCode==RIGHT:
-                self.x1+=2
         pop()
 class Light:
     def __init__(self,x3,y3):
-        self.x3=x3
-        self.speed1=5
-        self.y3=y3
-        self.q=5
-        self.h=602
+        self.x=x3
+        self.speed=5
+        self.y=y3
+        self.q=0
     def move(self):
-        self.x3 -= self.speed1
-        if self.q<=500:
-            self.q-=5
+        self.x -= self.speed
+        if self.x > 475:
+            self.q += self.speed
     def Ldraw(self):
         push()
         noStroke()
-        rectMode(CENTER)
+        #rectMode(CENTER)
         fill("#00E3FF")
-        rect(self.h,108,self.q,8,50)
-        translate(self.x3+10,self.y3)
+        rect(self.x,self.y,self.q,8,50)
+        
         pop()
-men=aironmen(0,0)
+men=ironmen(0,0)
 bill = bilshifr(0,0)
 spec=bilshifr(0,0)
+LiGhT=Light(0,0)
 bullet = []
 light = []
 def setup():
@@ -133,7 +127,8 @@ def setup():
     size(700,400)
     img = loadImage("1.png")
 def draw():
-    global state
+    global state,hp
+    print(hp)
     if state==0:
         fill(0,100,255)
         rect(300,175,100,50)
@@ -146,7 +141,7 @@ def draw():
     elif state==1:
         global c
         if c<195:
-            c+=0.1
+            c+=0.2
         background(255)
         bill.bildraw()
         men.imendraw()
@@ -165,9 +160,11 @@ def draw():
         for li in light:
             li.move()
             li.Ldraw()
-            if li.x3<125:
-                pass
-                #del light[0]
+            if li.x <= 0:
+                del light[0]
+                if li.y >= bill.y and li.y < bill.y + 100:
+                    hp -= 25   
+        
 def keyReleased():
     global c,t
     if keyCode == SHIFT and len(bullet) <= 2 and c>=65:
@@ -175,5 +172,5 @@ def keyReleased():
         c-=65
         t+=1
     if key == ENTER and len(light) <= 2:
-        light.append(Light(men.x1,men.y1))
-        background(0)
+        light.append(Light(men.x1+590,men.y1+100))
+        
