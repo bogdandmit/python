@@ -155,16 +155,21 @@ def draw():
         for bul in bullet:
             bul.move()
             bul.draw_()
-            if bul.x2 > 575:
+            if bul.x2 > 560:
                 del bullet[0]
         for li in light:
             li.move()
             li.Ldraw()
             if li.x <= 0:
                 del light[0]
-                if li.y >= bill.y and li.y < bill.y + 100:
+                if li.y >= bill.y and li.y < bill.y + 147.5 and li.x>=bill.x and hp>0:
                     hp -= 25   
-        
+        if hp==0:
+            state=2
+    elif state==2:
+        fill(255,0,0)
+        textSize(50)
+        text(u"игрок 2 выиграл",125,200)
 def keyReleased():
     global c,t
     if keyCode == SHIFT and len(bullet) <= 2 and c>=65:
@@ -173,4 +178,6 @@ def keyReleased():
         t+=1
     if key == ENTER and len(light) <= 2:
         light.append(Light(men.x1+590,men.y1+100))
+        
+
         
