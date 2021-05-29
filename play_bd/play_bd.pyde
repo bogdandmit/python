@@ -2,6 +2,8 @@ c=0
 t=0
 state=0
 hp=100
+g=0
+hp1=100
 class bilshifr:
     def __init__(self,x,y):
         self.x=x
@@ -64,6 +66,19 @@ class bilshifr:
         triangle(67.5,110,110,96,110,114)
         circle(110,105,17.5)
         pop()
+        push()
+        translate(300,0)
+        rect(140,342.5,195,37.5,10)
+        fill("#00FF0E")
+        rect(335,335,45,45,10)
+        rect(140,342.5,g,37.5,10)
+        line(205,342.5,205,380)
+        line(270,342.5,270,380)
+        scale(0.5)
+        translate(self.x+625, self.y+610)
+        fill("#00E3FF")
+        rect(55,100,70,10,5)
+        pop()
    
 
 class Bullet:
@@ -110,11 +125,8 @@ class Light:
             self.q += self.speed
     def Ldraw(self):
         push()
-        noStroke()
-        #rectMode(CENTER)
         fill("#00E3FF")
         rect(self.x,self.y,self.q,8,50)
-        
         pop()
 men=ironmen(0,0)
 bill = bilshifr(0,0)
@@ -139,9 +151,11 @@ def draw():
                 state=1
                 fill(255)
     elif state==1:
-        global c
+        global c,g,hp1
         if c<195:
             c+=0.2
+        if g<=195:
+            g+=0.2
         background(255)
         bill.bildraw()
         men.imendraw()
@@ -157,6 +171,8 @@ def draw():
             bul.draw_()
             if bul.x2 > 560:
                 del bullet[0]
+                if bul.y2>=LiGhT.y and bul.y2<=LiGhT.y+147.5 and bul.x2>=LiGhT.x and hp1>0:
+                    hp1-=25
         for li in light:
             li.move()
             li.Ldraw()
@@ -166,18 +182,31 @@ def draw():
                     hp -= 25   
         if hp==0:
             state=2
+        if hp1==0:
+            state=3
     elif state==2:
+        push()
         fill(255,0,0)
         textSize(50)
         text(u"игрок 2 выиграл",125,200)
+        pop()
+    elif state==3:
+        push()
+        fill("#FEFF03")
+        textSize(50)
+        text(u"игрок 1 выиграл",125,200)
+        pop()
+    push()
+    fill(0)
+    text(hp1,600,20)
+    text(hp,100,20)
+    pop()
 def keyReleased():
-    global c,t
+    global c,t,g
     if keyCode == SHIFT and len(bullet) <= 2 and c>=65:
         bullet.append(Bullet(bill.x , bill.y))
         c-=65
         t+=1
-    if key == ENTER and len(light) <= 2:
+    if key == ENTER and len(light) <= 2 and g>=65:
         light.append(Light(men.x1+590,men.y1+100))
-        
-
-        
+        g-=65
