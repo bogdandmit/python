@@ -142,6 +142,7 @@ def draw():
     global state,hp
     print(hp)
     if state==0:
+        background(255)
         fill(0,100,255)
         rect(300,175,100,50)
         fill(255,0,0)
@@ -151,12 +152,12 @@ def draw():
                 state=1
                 fill(255)
     elif state==1:
+        background(255)
         global c,g,hp1
         if c<195:
             c+=0.2
         if g<=195:
             g+=0.2
-        background(255)
         bill.bildraw()
         men.imendraw()
         spec.atak()
@@ -196,13 +197,17 @@ def draw():
         textSize(50)
         text(u"игрок 1 выиграл",125,200)
         pop()
+    elif state==4:
+        rectMode(CENTER)
+        rect(350,200,75,75,5)
+        noLoop()
     push()
     fill(0)
     text(hp1,600,20)
     text(hp,100,20)
     pop()
 def keyReleased():
-    global c,t,g
+    global c,t,g,state
     if keyCode == SHIFT and len(bullet) <= 2 and c>=65:
         bullet.append(Bullet(bill.x , bill.y))
         c-=65
@@ -210,3 +215,8 @@ def keyReleased():
     if key == ENTER and len(light) <= 2 and g>=65:
         light.append(Light(men.x1+590,men.y1+100))
         g-=65
+    if key == " ":
+        state=4
+    if key == "1":
+        loop()
+        state=1
