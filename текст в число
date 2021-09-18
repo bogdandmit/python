@@ -1,0 +1,5 @@
+import pyautogui
+import time
+x=float(input("введите первое число"))
+y=float(input("второе?"))
+print(x-y)
