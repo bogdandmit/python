@@ -1,0 +1,8 @@
+import pyautogui
+import time
+a=('10')
+b=('5')
+y=('10')
+a=b
+b=y
+print(a + " " + b)
