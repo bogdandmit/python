@@ -1,0 +1,10 @@
+import pyautogui
+import time
+#import random
+#x=(random(1,10))
+#pyautogui.alert(text="Hello Dmitriev Bogdan", title="WhatsApp",button='OK')
+pyautogui.hotkey("win", 'd')
+pyautogui.moveTo(325,1000)
+pyautogui.click()
+time.sleep(5)
+pyautogui.hotkey("ctrl", '8')
