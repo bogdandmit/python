@@ -1,0 +1,3 @@
+import pyautogui
+import time
+pyautogui.alert(text="Hello Dmitriev Bogdan", title="WhatsApp",button='OK')
