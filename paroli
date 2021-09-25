@@ -1,0 +1,7 @@
+import pyautogui
+import time
+parol=int(input("введите пароль"))
+if parol==1111:
+    print("пароль верный")
+if parol!=1111:
+    print("пароль неверный")
