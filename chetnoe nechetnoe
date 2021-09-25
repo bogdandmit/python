@@ -1,0 +1,7 @@
+import pyautogui
+import time
+x=int(input("введите число"))
+if x % 2 == 0:
+    print("число чётное")
+if x % 2 != 0:
+    print("число нечётное")
