@@ -1,0 +1,7 @@
+import pyautogui
+import time
+summa=int(input("введите сумму "))
+if summa >= 1000:
+    print(summa-(summa / 100 * 30))
+else:
+    print(summa)
