@@ -1,0 +1,22 @@
+import pyautogui
+import time
+komanda=input("введите команду ")
+if komanda == "zapros":
+    zapros=input("введите запрос ")
+    pyautogui.moveTo(150,900)
+    pyautogui.click()
+    pyautogui.write(zapros)
+if komanda == "text":
+    text=input("введите текст ")
+    pyautogui.hotkey("win", "d")
+    time.sleep(1)
+    pyautogui.hotkey("win", "r")
+    time.sleep(2)
+    pyautogui.write("notepad")
+    pyautogui.keyDown("enter")
+    time.sleep(1)
+    pyautogui.write(text)
+if komanda == "vihod":
+    pyautogui.hotkey("alt", "f4")
+    pyautogui.moveTo(650,450)
+    pyautogui.click()
