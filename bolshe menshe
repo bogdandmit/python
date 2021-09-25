@@ -1,0 +1,10 @@
+import pyautogui
+import time
+x=int(input("первое число"))
+z=int(input("второе число"))
+if x>z:
+      print(z)
+if z>x:
+      print(x)
+if x==z:
+      print("числа равны")
