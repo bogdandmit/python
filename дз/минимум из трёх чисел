@@ -1,0 +1,11 @@
+import pyautogui
+import time
+x=int(input("введите число "))
+y=int(input("введите число "))
+z=int(input("введите число "))
+if x<y and x<z:
+    print(x)
+if y<x and y<z:
+    print(y)
+if z<y and z<x:
+    print(z)    
