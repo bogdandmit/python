@@ -1,0 +1,6 @@
+x=int(input("введите число для выбора получения ответа "))
+if x==1:
+    y=input("Hello! How are you?")
+    if y=="I am fine! how are you?":
+        print("I am fine, thank you!")
+    
