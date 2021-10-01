@@ -1,6 +1,15 @@
 x=int(input("введите число для выбора получения ответа "))
 if x==1:
-    y=input("Hello! How are you?")
-    if y=="I am fine! how are you?":
-        print("I am fine, thank you!")
+    y=input("Hello! How are you? ")
+    if y=="I'm fine! How are you?":
+        print("I'm fine, thank you!")
+if x==2:
+    z=int(input("Hello! How old are you? "))
+    if z<11:
+        print("I'm older")
+    if z==11:
+        print("Me too!")
+    if z>11:
+        print("I'm younger")
+
     
