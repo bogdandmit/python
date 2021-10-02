@@ -1,9 +1,15 @@
-chislo=int(input("угадай число!"))
-while(chislo!=666):
-    if chislo<666:
-        print("число больше! Попробуй ещё раз!")
-        chislo=int(input("угадай число!"))
+import random
+chislo=random.randint(1,10)
+tvoechislo=int(input("число "))
+test=2
+while (tvoechislo != chislo and test != 0):
+    if tvoechislo < chislo:
+        tvoechislo=int(input("число больше! Попробуй ещё раз! "))
+        test=(test-1)
     else:
-        print("число меньше! Попробуй ещё раз!")
-        chislo=int(input("угадай число!"))
-print("Ура! Ты угадал!")
+        tvoechislo=int(input("число меньше! Попробуй ещё раз! "))
+        test=(test-1)
+if tvoechislo == chislo:
+    print("ты выиграл")
+else:
+    print("ты проиграл")
