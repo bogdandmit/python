@@ -6,10 +6,29 @@ if x==1:
 if x==2:
     z=int(input("Hello! How old are you? "))
     if z<11:
-        print("I'm older")
+        print("I'm older.")
     if z==11:
-        print("Me too!")
+        print("Me too.")
     if z>11:
-        print("I'm younger")
+        print("I'm younger.")
+if x==3:
+    a=input("What grade he in? ")
+    if a=="5B":
+        print("Me too.")
+    else:
+        print("I'm not.")
+if x==4:
+    s=input("What is your favourite subject? ")
+    if s=="Maths":
+        print("Me too.")
+    else:
+        print("Me favourite subject is Russian language")
 
+    
+    
+    
+    
+    
+    
+    
     
