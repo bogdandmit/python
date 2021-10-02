@@ -1,0 +1,10 @@
+login=input("введите логин ")
+parol=input("введите пароль ")
+while(login!="bogdandmit" or parol!="12345"):
+    if login!="bogdandmit":
+        print("логин не верен")
+        login=input("введите логин ")
+    if parol!="12345":
+        print("пароль не верен")
+        parol=input("введите пароль ")
+print("пароль и логин верны")
