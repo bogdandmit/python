@@ -1,0 +1,20 @@
+import pyautogui
+operations=input("введите операцию ")
+while(operations!="exit"):
+    if operations == "+":
+        x=int(input("введите первое слагаемое "))
+        y=int(input("введите второе слагаемое "))
+        print(x + y)
+        operations=input("введите операцию ")
+    if operations == "*":
+        z=int(input("введите первый множитель "))
+        a=int(input("введите второй множитель "))
+        print(z * a)
+        operations=input("введите операцию ")
+    if operations == "/":
+        s=int(input("введите делимое "))
+        d=int(input("введите делитель "))
+        print(s / d)
+        operations=input("введите операцию ")
+        
+
