@@ -1,0 +1,9 @@
+chislo=int(input("угадай число!"))
+while(chislo!=666):
+    if chislo<666:
+        print("число больше! Попробуй ещё раз!")
+        chislo=int(input("угадай число!"))
+    else:
+        print("число меньше! Попробуй ещё раз!")
+        chislo=int(input("угадай число!"))
+print("Ура! Ты угадал!")
