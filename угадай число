@@ -1,6 +1,6 @@
 import random
 chislo=random.randint(1,10)
-tvoechislo=int(input("число "))
+tvoechislo=int(input("угадай число "))
 test=2
 while (tvoechislo != chislo and test != 0):
     if tvoechislo < chislo:
@@ -12,4 +12,4 @@ while (tvoechislo != chislo and test != 0):
 if tvoechislo == chislo:
     print("ты выиграл")
 else:
-    print("ты проиграл")
+    print("ты проиграл", "число:",chislo)
