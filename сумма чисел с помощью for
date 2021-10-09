@@ -1,0 +1,6 @@
+summa=0
+n=int(input("введите колличество чисел в примере"))
+for n in range(n):
+    n=int(input("введите число"))
+    summa=summa+n
+print(summa)
