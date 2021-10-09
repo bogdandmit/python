@@ -1,0 +1,17 @@
+import pyautogui
+import time
+i=int(input("введите число "))
+pyautogui.moveTo(225,900)
+pyautogui.click()
+time.sleep(1)
+n=1
+for i in range(i):
+    pyautogui.click(1000,300,1,0,'right')
+    pyautogui.moveTo(1025,550)
+    pyautogui.click()
+    pyautogui.moveTo(900,650)
+    pyautogui.click()
+    pyautogui.write(str(n) + ".txt")
+    n=n+1
+    time.sleep(0.3)
+
