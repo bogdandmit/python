@@ -1,0 +1,72 @@
+print("Напишите start чтобы начать.")
+def start():
+    win=0
+    x = [['*','*','*'],
+         ['*','*','*'],
+         ['*','*','*']]
+    for i in x:
+        print(i)
+    z=0
+    while win!=1:
+        print("Ход первого игрока")
+        z=int(input("Введите номер строки или выход "))
+        y=int(input("Введите номер столбца "))
+        if z<4 and z>0 and y<4 and y>0:
+            x[z-1][y-1]="O"
+        for i in x:
+            print(i)
+        if x[0][0]=='O' and x[1][1]=='O' and x[2][2]=='O':
+            win=win+1
+            print("Первый игрок выиграл")
+        if x[0][0]=='O' and x[0][1]=='O' and x[0][2]=='O':
+            win=win+1
+            print("Первый игрок выиграл")
+        if x[1][0]=='O' and x[1][1]=='O' and x[1][2]=='O':
+            win=win+1
+            print("Первый игрок выиграл")
+        if x[2][0]=='O' and x[2][1]=='O' and x[2][2]=='O':
+            win=win+1
+            print("Первый игрок выиграл")
+        if x[0][0]=='O' and x[0][1]=='O' and x[0][2]=='O':
+            win=win+1
+            print("Первый игрок выиграл")
+        if x[1][0]=='O' and x[1][1]=='O' and x[1][2]=='O':
+            win=win+1
+            print("Первый игрок выиграл")
+        if x[2][0]=='O' and x[2][1]=='O' and x[2][2]=='O':
+            win=win+1
+            print("Первый игрок выиграл")
+        if x[0][2]=='O' and x[1][1]=='O' and x[2][0]=='O':
+            win=win+1
+            print("Первый игрок выиграл")
+        print("Ход второго игрока")
+        d=int(input("Введите номер строки или выход "))
+        f=int(input("Введите номер столбца "))
+        if d<4 and f>0 and d<4 and f>0:
+            x[d-1][f-1]="X"
+        for i in x:
+            print(i)
+        if x[0][0]=='X' and x[1][1]=='X' and x[2][2]=='X':
+            win=win+1
+            print("Второй игрок выиграл")
+        if x[0][0]=='X' and x[0][1]=='X' and x[0][2]=='X':
+            win=win+1
+            print("Второй игрок выиграл")
+        if x[1][0]=='X' and x[1][1]=='X' and x[1][2]=='X':
+            win=win+1
+            print("Второй игрок выиграл")
+        if x[2][0]=='X' and x[2][1]=='X' and x[2][2]=='X':
+            win=win+1
+            print("Второй игрок выиграл")
+        if x[0][0]=='X' and x[0][1]=='X' and x[0][2]=='X':
+            win=win+1
+            print("Второй игрок выиграл")
+        if x[1][0]=='X' and x[1][1]=='X' and x[1][2]=='X':
+            win=win+1
+            print("Второй игрок выиграл")
+        if x[2][0]=='X' and x[2][1]=='X' and x[2][2]=='X':
+            win=win+1
+            print("Второй игрок выиграл")
+        if x[0][2]=='X' and x[1][1]=='X' and x[2][0]=='X':
+            win=win+1
+            print("Второй игрок выиграл")
