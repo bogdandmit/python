@@ -11,7 +11,7 @@ def start():
         print("Ход первого игрока")
         z=int(input("Введите номер строки или выход "))
         y=int(input("Введите номер столбца "))
-        if z<4 and z>0 and y<4 and y>0:
+        if x[z][y]=='*':
             x[z-1][y-1]="O"
         for i in x:
             print(i)
@@ -42,7 +42,7 @@ def start():
         print("Ход второго игрока")
         d=int(input("Введите номер строки или выход "))
         f=int(input("Введите номер столбца "))
-        if d<4 and f>0 and d<4 and f>0:
+        if x[d][f]=='*':
             x[d-1][f-1]="X"
         for i in x:
             print(i)
@@ -70,3 +70,5 @@ def start():
         if x[0][2]=='X' and x[1][1]=='X' and x[2][0]=='X':
             win=win+1
             print("Второй игрок выиграл")
+        
+
