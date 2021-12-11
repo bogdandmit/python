@@ -1,0 +1,54 @@
+import time
+import keyboard
+import random
+gold=0
+n='X'
+t=0
+r=9
+t1=random.randint(0,9)
+r1=0
+r2=0
+t2=random.randint(0,9)
+while t2==t1:
+    t2=random.randint(0,9)
+g='+'
+x=[['O','O','O','O','O','O','O','O','O','O'],['O','O','O','O','O','O','O','O','O','O'],['O','O','O','O','O','O','O','O','O','O'],['O','O','O','O','O','O','O','O','O','O'],['O','O','O','O','O','O','O','O','O','O'],['O','O','O','O','O','O','O','O','O','O'],['O','O','O','O','O','O','O','O','O','O'],['O','O','O','O','O','O','O','O','O','O'],['O','O','O','O','O','O','O','O','O','O'],['O','O','O','O','O','O','O','O','O','O']]
+while True:
+    x[r2][t2]='#'
+    x[r1][t1]=g
+    x[r][t]=n
+    for i in x:
+        for c in i:
+            print(c, end=' ')
+        print()
+    print(gold)
+    for i in range(10):
+        time.sleep(0.1)
+    if (keyboard.is_pressed('d')) and t<9:
+        x[r][t] = 'O'
+        t=t+1
+        x[r][t] = 'X'
+    if (keyboard.is_pressed('a')) and t>0:
+        x[r][t] = 'O'
+        t=t-1
+        x[r][t] = 'X'
+    if (keyboard.is_pressed('w')) and r>0:
+        x[r][t] = 'O'
+        r=r-1
+        x[r][t] = 'X'
+    if (keyboard.is_pressed('s')) and r<9:
+        x[r][t] = 'O'
+        r=r+1
+        x[r][t] = 'X'
+    if r1<9 :
+        x[r1][t1] = 'O'
+        r1=r1+1
+        x[r1][t1] = '+'
+    
+    else:
+        x[r1][t1] = 'O'
+        t1=random.randint(0,9)
+        r1=0
+    if r1==r and t1==t:
+        gold=gold+1
+    print()
