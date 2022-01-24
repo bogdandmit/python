@@ -1,24 +1,3 @@
-import mylib
-# массивы и функция vyvodPolya в файле mylib.py
-game = True
-while game:
-    mylib.vyvodPolya(mylib.vidimost_polya)
-    stroka = int(input("Введите номер строки"))
-    stolb = int(input("Введите номер столбца"))
-    game = mylib.prov_min(stroka,stolb)
-    if (stroka>12 or stroka<1) or (stolb>12 or stolb<1):
-        print("введены неверные столбец или строка")
-        exit()
-    # передадим не номера строки и столбца, а индексы
-    
-    mylib.check(stroka-1,stolb-1)
-    #if mylib.isOpen():
-        #game = False
-
-#print("Всё поле открыто!")
-
-
-
 import random
 # массив поля, * — пустое поле, # — стена
 pole = [["*","*","*","*","*","*","*","*","*","*","*","*"],
@@ -88,7 +67,7 @@ def check(stroka,stolb):
                     check(stroka+1,stolb+1)
                     
             if stolb-1 >= 0:
-                    check(stroka,stolb-1)
+                check(stroka,stolb-1)
             if stolb+1 < len(pole[stroka]):
                 check(stroka,stolb+1)
 
@@ -98,7 +77,8 @@ def prov_min(stroka,stolb):
         return False
     else:
         return True
-def kol_vo_min(chk):
+def kol_vo_min(stroka,stolb,chk):
+    # пробегаемся по всем клеткам поля
     for stroka in chk:
         for kletka in stroka:
             if pole[stroka-1][stolb-1]=="#":
@@ -108,16 +88,16 @@ def kol_vo_min(chk):
                         check(stroka-1,stolb-1)
                     if stolb+1 < len(pole[stroka]):
                         check(stroka-1,stolb+1)
-                    
+                            
                 if stroka+1 < len(pole):
                     check(stroka+1,stolb)
                     if stolb-1 >= 0:
                         check(stroka+1,stolb-1)
                     if stolb+1 < len(pole[stroka]):
                         check(stroka+1,stolb+1)
-                        
+                                
                 if stolb-1 >= 0:
-                        check(stroka,stolb-1)
+                    check(stroka,stolb-1)
                 if stolb+1 < len(pole[stroka]):
                     check(stroka,stolb+1)
                 
