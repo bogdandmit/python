@@ -1,0 +1,34 @@
+class Student:
+    
+    def __init__(self,f,g,o):
+        self.familiya=f
+        self.gruppa=g
+        self.otsenki=o
+        
+    def infa(self):
+        print(self.familiya,self.gruppa,self.otsenki)
+        
+human1=Student("Дмитриев Б. Д.",1,5.00)
+human2=Student('Поляков А. В.',1,3.55)
+human3=Student('Коршунов А. И.',1,4.03)
+human4=Student('Мухортов Е. А.',2,4.25)
+human5=Student('Хорошилов Е. В.',2,3.00)
+human6=Student('Кулемина А. Г.',2,4.34)
+human7=Student('Антонова А. В.',2,3.65)
+human8=Student('Мусарова М. К.',2,4.00)
+human9=Student('Алфимова А. А.',2,5.00)
+human10=Student('Никоноров И. А.',2,4.33)
+s=[]
+s.append(human1)
+s.append(human2)
+s.append(human3)
+s.append(human4)
+s.append(human5)
+s.append(human6)
+s.append(human7)
+s.append(human8)
+s.append(human9)
+s.append(human10)
+for i in range(len(s)):
+    if s[i].otsenki>=4.00:
+        s[i].infa()
