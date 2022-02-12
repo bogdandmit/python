@@ -1,0 +1,6 @@
+x=[6,9,3,1,7,23,65,49]
+s=[]
+for i in range(len(x)):
+    s.insert(i,min(x))
+    x.remove(min(x))
+print(s)
