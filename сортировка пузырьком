@@ -1,0 +1,12 @@
+x=[6,9,3,1,7,23,65,49]
+c=0
+def sort():
+    for c in range(len(x)-1):
+        for i in range(len(x)-1):
+            if x[i]>x[i+1]:
+                c=x[i]
+                x[i]=x[i+1]
+                x[i+1]=c
+                
+                print(x)
+sort()
