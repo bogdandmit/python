@@ -1,0 +1,30 @@
+class Train:
+    
+    def __init__(self,p,n,t):
+        self.punct=p
+        self.nomer=n
+        self.time=t
+        
+    def infa(self):
+        print(self.punct,self.nomer,self.time)
+        
+t = [Train("Владивосток",631,8.00),
+     Train('Морозово',254,5.30),
+     Train('Анапа',378,17.00),
+     Train('Сочи',439,14.30),
+     Train('Москва',500,3.00)]
+def t_nomer(Train):
+    return Train.nomer
+def t_punct(Train):
+    return Train.punct
+r=input("Как сортировать? ")
+if r=="по номеру":
+    t = sorted(t, key = t_nomer)
+    for i in range(len(t)):
+        print(t[i].infa())
+if r== "по пункту назначения":
+    t = sorted(t, key = t_punct)
+    for i in range(len(t)):
+        print(t[i].infa())
+
+
