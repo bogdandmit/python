@@ -1,0 +1,72 @@
+from tkinter import *  
+from tkinter.ttk import Radiobutton  
+from tkinter.ttk import Checkbutton   
+  
+def clicked():
+    lbl1.configure(text=selected.get())
+    if  selected.get()==1:
+        lbl1.configure(text="Полтора судака стоят полтора рубля. Сколько стоят 13 судаков?")
+        chk_state = BooleanVar()    
+        chk = Checkbutton(window, text='13', var=chk_state)  
+        chk.grid(column=4, row=5)
+        chk_state = BooleanVar()    
+        chk = Checkbutton(window, text='5', var=chk_state)  
+        chk.grid(column=2, row=5)
+        chk_state = BooleanVar()    
+        chk = Checkbutton(window, text='10', var=chk_state)  
+        chk.grid(column=3, row=5) 
+    if  selected.get()==2:
+        lbl2.configure(text="Стоит богатый дом и бедный. Они горят. Какой дом будет тушить полиция?")
+        chk_state = BooleanVar()    
+        chk = Checkbutton(window, text='Бедный', var=chk_state)  
+        chk.grid(column=4, row=5)
+        chk_state = BooleanVar()    
+        chk = Checkbutton(window, text='Богатый', var=chk_state)  
+        chk.grid(column=2, row=5)
+        chk_state = BooleanVar()    
+        chk = Checkbutton(window, text='Никакой', var=chk_state)  
+        chk.grid(column=3, row=5)
+    if  selected.get()==3:
+        lbl3.configure(text="Если пять кошек ловят пять мышей за пять минут, то сколько времени нужно одной кошке, чтобы поймать одну мышку?")
+        rad10 = Radiobutton(window,text='1 минута', value=1, variable=select)
+        rad10.grid(column=2,row=5)
+        rad11 = Radiobutton(window,text='5 минут', value=2, variable=select)
+        rad11.grid(column=3,row=5)
+        rad12 = Radiobutton(window,text='2 минуты', value=3, variable=select)
+        rad12.grid(column=4,row=5)
+        if select.get()==2:
+            T= Label(window, text="Правильно", font=('Arial',10))
+            T.grid(column=5,row=5)
+    
+    #if  selected.get()==4:
+        #lbl4.configure(text=" В одном городе все люди были торговцами или гончарами. Торговцы всегда говорили неправду, а гончары – правду. Когда все люди собрались на площади, каждый из собравшихся сказал остальным: «Вы все торговцы!» Сколько гончаров было в этом городе?")
+        
+  
+  
+window = Tk()  
+window.title("Отчётная викторина")  
+window.geometry('400x250')  
+selected = IntVar()
+select = IntVar()
+
+
+rad1 = Radiobutton(window,text='Первый вопрос', value=1, variable=selected)  
+rad2 = Radiobutton(window,text='Второй вопрос', value=2, variable=selected)  
+rad3 = Radiobutton(window,text='Третий вопрос', value=3, variable=selected)  
+btn = Button(window, text="Клик", command=clicked)  
+lbl = Label(window)  
+rad1.grid(column=0, row=0)  
+rad2.grid(column=1, row=0)  
+rad3.grid(column=2, row=0)
+
+btn.grid(column=3, row=0)  
+lbl.grid(column=0, row=1)
+lbl1 = Label(window, text="", font=('Arial',10))
+lbl1.grid(column=1,row=2)
+lbl2 = Label(window, text="", font=('Arial',10))
+lbl2.grid(column=1,row=2)
+lbl3 = Label(window, text="", font=('Arial',10))
+lbl3.grid(column=1,row=2)
+window.mainloop()
+
+
