@@ -3,30 +3,32 @@ from tkinter.ttk import Radiobutton
 from tkinter.ttk import Checkbutton   
   
 def clicked():
+    global T
     lbl1.configure(text=selected.get())
     if  selected.get()==1:
         lbl1.configure(text="Полтора судака стоят полтора рубля. Сколько стоят 13 судаков?")
-        chk_state = BooleanVar()    
-        chk = Checkbutton(window, text='13', var=chk_state)  
-        chk.grid(column=4, row=5)
-        chk_state = BooleanVar()    
-        chk = Checkbutton(window, text='5', var=chk_state)  
-        chk.grid(column=2, row=5)
-        chk_state = BooleanVar()    
-        chk = Checkbutton(window, text='10', var=chk_state)  
-        chk.grid(column=3, row=5) 
+        rad4 = Radiobutton(window,text='1,5', value=1, variable=select)
+        rad4.grid(column=2,row=5)
+        rad5 = Radiobutton(window,text='13', value=2, variable=select)
+        rad5.grid(column=3,row=5)
+        rad6 = Radiobutton(window,text='10', value=3, variable=select)
+        rad6.grid(column=4,row=5)
+        if select.get()==2:
+            #T= Label(window, text="Правильно", font=('Arial',10))
+            T.grid(column=5,row=5)
     if  selected.get()==2:
+        T.place(x=0,y=-30)
         lbl2.configure(text="Стоит богатый дом и бедный. Они горят. Какой дом будет тушить полиция?")
-        chk_state = BooleanVar()    
-        chk = Checkbutton(window, text='Бедный', var=chk_state)  
-        chk.grid(column=4, row=5)
-        chk_state = BooleanVar()    
-        chk = Checkbutton(window, text='Богатый', var=chk_state)  
-        chk.grid(column=2, row=5)
-        chk_state = BooleanVar()    
-        chk = Checkbutton(window, text='Никакой', var=chk_state)  
-        chk.grid(column=3, row=5)
+        rad4 = Radiobutton(window,text='Богатый', value=1, variable=select)
+        rad4.grid(column=2,row=5)
+        rad5 = Radiobutton(window,text='Бедный', value=2, variable=select)
+        rad5.grid(column=3,row=5)
+        rad6 = Radiobutton(window,text='Никакой', value=3, variable=select)
+        rad6.grid(column=4,row=5)
+        if select.get()==3:
+            T.grid(column=5,row=5)
     if  selected.get()==3:
+        T.place(x=0,y=-30)
         lbl3.configure(text="Если пять кошек ловят пять мышей за пять минут, то сколько времени нужно одной кошке, чтобы поймать одну мышку?")
         rad10 = Radiobutton(window,text='1 минута', value=1, variable=select)
         rad10.grid(column=2,row=5)
@@ -35,11 +37,9 @@ def clicked():
         rad12 = Radiobutton(window,text='2 минуты', value=3, variable=select)
         rad12.grid(column=4,row=5)
         if select.get()==2:
-            T= Label(window, text="Правильно", font=('Arial',10))
             T.grid(column=5,row=5)
     
-    #if  selected.get()==4:
-        #lbl4.configure(text=" В одном городе все люди были торговцами или гончарами. Торговцы всегда говорили неправду, а гончары – правду. Когда все люди собрались на площади, каждый из собравшихся сказал остальным: «Вы все торговцы!» Сколько гончаров было в этом городе?")
+    
         
   
   
@@ -67,6 +67,8 @@ lbl2 = Label(window, text="", font=('Arial',10))
 lbl2.grid(column=1,row=2)
 lbl3 = Label(window, text="", font=('Arial',10))
 lbl3.grid(column=1,row=2)
-window.mainloop()
 
+T= Label(window, text="Правильно", font=('Arial',10))
+T.place(x=0,y=-30)
+window.mainloop()
 
