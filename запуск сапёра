@@ -1,0 +1,10 @@
+from saper_comand import *
+opened = False
+while opened == False:
+    opened=isOpen()
+    vyvodPolya(vidimost_polya)
+    stroka=int(input("Введите строку"))
+    stolb=int(input("Введите столб"))
+    prov_min(stroka,stolb)
+    check(stroka,stolb)
+    kol_vo_min(stroka,stolb,pole)
