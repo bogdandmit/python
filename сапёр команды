@@ -45,23 +45,23 @@ def vyvodPolya(vidimost_polya):
 
 def check(stroka,stolb):
     # если клетка ещё не открыта
-    if vidimost_polya[stroka-1][stolb-1] == "•":
+    if vidimost_polya[stroka][stolb] == "•":
         # открываем
-        vidimost_polya[stroka-1][stolb-1] = pole[stroka-1][stolb-1]
+        vidimost_polya[stroka][stolb] = pole[stroka-1][stolb-1]
         # если оно оказалось пустым
-        if pole[stroka-1][stolb-1] == "*":
+        if pole[stroka][stolb] == "*":
             # проверяем все соседние, только если они существуют
             # а то выйдем за пределы поля, Python ругать будет
-            if stroka-2 >= 0:
-                check(stroka-2,stolb-1)
+            if stroka-1 >= 0:
+                check(stroka-1,stolb)
                     
-            if stroka+2 < len(pole):
-                check(stroka+2,stolb)
+            if stroka+1 < len(pole):
+                check(stroka+1,stolb)
                     
-            if stolb-2 >= 0:
-                check(stroka,stolb-2)
-            if stolb+2 < len(pole[stroka]):
-                check(stroka,stolb+2)
+            if stolb-1 >= 0:
+                check(stroka,stolb-1)
+            if stolb+1 < len(pole[stroka]):
+                check(stroka,stolb+1)
 
 def prov_min(stroka,stolb):
     if pole[stroka-1][stolb-1] == "#":
@@ -69,6 +69,7 @@ def prov_min(stroka,stolb):
         return False
     else:
         return True
+
 def kol_vo_min(stroka,stolb,pole):
     # пробегаемся по всем клеткам поля
     m=0
@@ -100,6 +101,7 @@ def kol_vo_min(stroka,stolb,pole):
                     if pole[strok][kletka+1]=="#":
                         m=m+1
     pole[strok][kletka]=m
+
 # добавим проверку, остались ли ещё неоткрытые элементы поля
 # функция будет возвращать True, если больше нет
 # и False, если ещё остались
