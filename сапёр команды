@@ -1,4 +1,8 @@
 import random
+from tkinter import *
+window=Tk()
+window.title("Сапер")
+window.geometry('400x250')
 # массив поля, * — пустое поле, # — стена
 pole = [["*","*","*","*","*","*","*","*","*","*","*","*"],
         ["*","*","*","*","*","*","*","*","*","*","*","*"],
@@ -12,8 +16,16 @@ pole = [["*","*","*","*","*","*","*","*","*","*","*","*"],
         ["*","*","*","*","*","*","*","*","*","*","*","*"],
         ["*","*","*","*","*","*","*","*","*","*","*","*"],
         ["*","*","*","*","*","*","*","*","*","*","*","*"]]
-for i in range(20):
-    pole[random.randint(0,11)][random.randint(0,11)]="#"
+def mina():
+    for i in range(30):
+        pole[random.randint(0,11)][random.randint(0,11)]="#"
+c= Canvas(window, width=1000,height=1000,bg="red")
+c.pack()
+for i in range(len (pole)):
+    for z in range(len(pole)):
+        button1=Button(c,command="",width=6,height=3)
+        button1.place(x=i*50,y=z*50)
+        #button1.place(x=10,y=z*75)
 # то, что будет выводиться на экран
 vidimost_polya=[["•","•","•","•","•","•","•","•","•","•","•","•"],
                 ["•","•","•","•","•","•","•","•","•","•","•","•"],
@@ -38,29 +50,48 @@ def vyvodPolya(vidimost_polya):
         print()
         
         
+        
 # проверка поля на то, что внутри него
 # если поле пустое, проверяются все клетки вокруг него
 # если стена — не проверяются
 # если поле уже было открыто — оно не проверяется
 
+            
+            
 def check(stroka,stolb):
+    stroka=int(stroka)
+    stolb=int(stolb)
     # если клетка ещё не открыта
-    if vidimost_polya[stroka][stolb] == "•":
+    if vidimost_polya[stroka-1][stolb-1] == "•":
         # открываем
-        vidimost_polya[stroka][stolb] = pole[stroka-1][stolb-1]
+        vidimost_polya[stroka-1][stolb-1] = pole[stroka-1][stolb-1]
         # если оно оказалось пустым
-        if pole[stroka][stolb] == "*":
+        if pole[stroka-1][stolb-1] == "*":
             # проверяем все соседние, только если они существуют
             # а то выйдем за пределы поля, Python ругать будет
-            if stroka-1 >= 0:
+            # клетка сверху
+            if stroka-1 > 0:
                 check(stroka-1,stolb)
-                    
-            if stroka+1 < len(pole):
+                # клетка сверху слева
+                if stolb-1 > 0:
+                    check(stroka-1,stolb-1)
+                # клетка сверху справа
+                if stolb+1 < len(pole):
+                    check(stroka-1,stolb+1)
+            # клетка снизу        
+            if stroka < len(pole):
                 check(stroka+1,stolb)
-                    
-            if stolb-1 >= 0:
+                # клетка слева снизу
+                if stolb-1 > 0:
+                    check(stroka+1,stolb-1)
+                # клетка справа снизу
+                if stolb+1 < len(pole):
+                    check(stroka+1,stolb+1)
+            # клетка слева
+            if stolb-1 > 0:
                 check(stroka,stolb-1)
-            if stolb+1 < len(pole[stroka]):
+            # клетка справа
+            if stolb+1 < len(pole):
                 check(stroka,stolb+1)
 
 def prov_min(stroka,stolb):
@@ -70,38 +101,46 @@ def prov_min(stroka,stolb):
     else:
         return True
 
-def kol_vo_min(stroka,stolb,pole):
+def kol_vo_min(pole):
     # пробегаемся по всем клеткам поля
-    m=0
+    
+    s=0
+    k=0
     for strok in pole:
+        k=0
         for kletka in strok:
-            if pole[strok][kletka]=="*":
-                if strok-1>=0:
-                    if pole[strok-1][kletka]=="#":
+            m=0
+            if pole[s][k]=="*":
+                if s-1>0:
+                    if pole[s-1][k]=="#":
                         m=m+1
-                    if kletka-1>=0:
-                        if pole[strok-1][kletka-1]=="#":
+                    if k-1>0:
+                        if pole[s-1][k-1]=="#":
                             m=m+1
-                    if kletka+1<=len(pole):
-                        if pole[strok-1][kletka+1]=="#":
+                    if k+1<len(pole):
+                        if pole[s-1][k+1]=="#":
                             m=m+1
-                if strok+1<=len(pole):
-                    if pole[strok+1][kletka]=="#":
+                if s+1<len(pole):
+                    if pole[s+1][k]=="#":
                         m=m+1
-                    if kletka+1<=len(pole):
-                        if pole[strok+1][kletka+1]=="#":
+                    if k+1<len(pole):
+                        if pole[s+1][k+1]=="#":
                             m=m+1
-                    if kletka-1>=0:
-                        if pole[strok+1][kletka-1]=="#":
+                    if k-1>0:
+                        if pole[s+1][k-1]=="#":
                             m=m+1
-                if kletka-1>=0:
-                    if pole[strok][kletka-1]=="#":
+                if k-1>0:
+                    if pole[s][k-1]=="#":
                         m=m+1
-                if kletka+1>=0:
-                    if pole[strok][kletka+1]=="#":
+                if k+1<len(pole):
+                    if pole[s][k+1]=="#":
                         m=m+1
-    pole[strok][kletka]=m
-
+                pole[s][k]=m
+                if m==0:
+                    pole[s][k]="*"
+            k=k+1
+        s=s+1
+    
 # добавим проверку, остались ли ещё неоткрытые элементы поля
 # функция будет возвращать True, если больше нет
 # и False, если ещё остались
