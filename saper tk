@@ -1,0 +1,6 @@
+from tkinter import *
+
+from saper_comand import *
+kletki()
+
+window.mainloop()    
