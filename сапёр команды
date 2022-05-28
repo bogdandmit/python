@@ -93,14 +93,6 @@ def check(stroka,stolb):
             # клетка справа
             if stolb+1 < len(pole):
                 check(stroka,stolb+1)
-
-def prov_min(stroka,stolb):
-    if pole[stroka-1][stolb-1] == "#":
-        print("Game over")
-        return False
-    else:
-        return True
-
 def kol_vo_min(pole):
     # пробегаемся по всем клеткам поля
     
@@ -141,17 +133,4 @@ def kol_vo_min(pole):
             k=k+1
         s=s+1
     
-# добавим проверку, остались ли ещё неоткрытые элементы поля
-# функция будет возвращать True, если больше нет
-# и False, если ещё остались
 
-def isOpen():
-    # считаем, что поле открыто всё
-    opened = True
-    #для каждой строки в видимости поля
-    for stroka in vidimost_polya:
-        # если хотя бы в одной нашлось закрытое поле
-        if "•" in stroka:
-            # значит неправда, поле ещё не всё открыто
-            opened = False
-    return opened
