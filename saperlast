@@ -1,0 +1,6 @@
+from saper import *
+import random
+vyvodPolya(spisok)
+check(stroka,stolb)
+prov_min(stroka,stolb)
+kol_vo_min(stroka,stolb,chk)
